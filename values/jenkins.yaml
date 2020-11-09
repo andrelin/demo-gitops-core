@@ -1,0 +1,26 @@
+master:
+  ingress:
+    enabled: true
+    apiVersion: "extensions/v1beta1"
+    hostName: "jenkins.lindjo.no"
+    paths: []
+    annotations:
+      kubernetes.io/ingress.class: "public"
+      kubernetes.io/ingress.global-static-ip-name: "jenkins-static-ip"
+    # paths:
+    #   - /github-webhook
+
+  # jenkinsUrl: jenkins.lindjo.no
+
+  JCasC:
+    enabled: true
+  sidecars:
+    configAutoReload:
+      enabled: true
+
+  enableRawHtmlMarkupFormatter: true
+
+  additionalPlugins: ["antisamy-markup-formatter"]
+#
+rbac:
+  create: true
