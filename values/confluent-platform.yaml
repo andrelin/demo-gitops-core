@@ -1,0 +1,6 @@
+---
+cp-schema-registry:
+  enabled: false
+
+cp-kafka-connect:
+  enabled: false

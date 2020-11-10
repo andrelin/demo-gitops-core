@@ -6,6 +6,7 @@ maintainer = "Andrelin"
 [helmRepos]
 stable = "https://charts.helm.sh/stable"
 jenkins = "https://charts.jenkins.io"
+confluentinc = "https://confluentinc.github.io/cp-helm-charts/"
 
 [namespaces.core.labels]
 env = "core"
@@ -18,5 +19,38 @@ enabled = true
 chart = "jenkins/jenkins"
 version = "2.17.0"
 valuesFiles = [ "values/jenkins.yaml",]
+purge = true
+test = false
+
+[apps.chartmuseum]
+name = "chartmuseum"
+description = "chartmuseum"
+namespace = "core"
+enabled = true
+chart = "stable/chartmuseum"
+version = "2.14.0"
+valuesFiles = [ "values/chartmuseum.yaml",]
+purge = true
+test = false
+
+[apps.confluent-platform]
+name = "confluent-platform"
+description = "confluent-platform"
+namespace = "core"
+enabled = true
+chart = "confluentinc/cp-helm-charts"
+version = "0.5.0"
+valuesFiles = [ "values/confluent-platform.yaml",]
+purge = true
+test = false
+
+[apps.zookeeper-client]
+name = "zookeeper-client"
+description = "zookeeper-client"
+namespace = "core"
+enabled = true
+chart = "confluentinc/cp-zookeeper"
+version = "5.5.0"
+valuesFiles = [ "values/zookeeper-client.yaml",]
 purge = true
 test = false

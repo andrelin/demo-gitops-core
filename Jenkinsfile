@@ -9,7 +9,7 @@ pipeline {
     agent {
         kubernetes {
             cloud "kubernetes"
-            label "rdpmon-dev"
+            label "core"
             serviceAccount "jenkins-build"
             yamlFile "helmsman.yaml"
         }

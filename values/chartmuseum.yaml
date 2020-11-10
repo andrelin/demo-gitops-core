@@ -1,0 +1,17 @@
+env:
+  open:
+    DISABLE_API: false
+    AUTH_ANONYMOUS_GET: true
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+ingress:
+  enabled: true
+  hosts:
+  - name: "jenkins.lindjo.no"
+    path: /
+
+# serviceType: LoadBalancer
