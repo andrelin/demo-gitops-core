@@ -5,7 +5,7 @@ master:
   ingress:
     enabled: true
     apiVersion: "networking.k8s.io/v1beta1"
-    hostName: "j.jenkins.lindjo.no"
+    hostName: "jenkins.lindjo.no"
     paths:
       - backend:
           serviceName: >-

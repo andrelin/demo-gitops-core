@@ -10,12 +10,9 @@ pipeline {
         kubernetes {
             cloud "kubernetes"
             label "core"
-            serviceAccount "jenkins-build"
-            yamlFile "helmsman.yaml"
+            serviceAccount "jenkins"
+            yamlFile "demo-deployer.yaml"
         }
-    }
-    environment {
-        cmAddr = "http://core-chartmuseum.core.svc.cluster.local:8080"
     }
     stages {
         stage("Deploy Dev") {
@@ -23,14 +20,13 @@ pipeline {
                 branch "master"
             }
             steps {
-                container("helmsman") {
+                container("demo-deployer") {
                     withCredentials([
                         usernamePassword(
                             credentialsId: "chartmuseum",
                             usernameVariable: "CHARTMUSEUM_USER",
                             passwordVariable: "CHARTMUSEUM_PASSWORD"
                         ),
-                        [$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ecr-creds']
                     ]) {
                         script {
                             lock(u.get_lock_name("rdpmon", "rdp-monitoring-dev")) {

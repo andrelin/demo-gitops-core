@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+    - name: demo-deployer
+      image: eu.gcr.io/andrelin-dev/demo-deployment-image
+      command: ["cat"]
+      tty: true

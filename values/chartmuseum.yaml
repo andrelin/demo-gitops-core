@@ -11,7 +11,7 @@ persistence:
 ingress:
   enabled: true
   hosts:
-  - name: "jenkins.lindjo.no"
+  - name: "chartmuseum.lindjo.no"
     path: /
 
 # serviceType: LoadBalancer
