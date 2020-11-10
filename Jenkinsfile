@@ -15,7 +15,7 @@ pipeline {
         }
     }
     stages {
-        stage("Deploy Dev") {
+        stage("Deploy Core") {
             when {
                 branch "master"
             }
@@ -29,7 +29,7 @@ pipeline {
                         ),
                     ]) {
                         script {
-                            lock(u.get_lock_name("rdpmon", "rdp-monitoring-dev")) {
+                            lock("deploy-core") {
                                 sh "helmsman --debug --apply -f dsf.toml --kubeconfig kubeconfig.yaml"
                             }
                         }
